@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://satyam-mishra.github.io/" />
   <meta property="og:image" content="https://satyam-mishra.github.io/assets/profile.jpg" />
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" />
   <link rel="stylesheet" href="assets/styles.css" />
 
   <script type="application/ld+json">
@@ -52,7 +52,29 @@
 
   <header class="site-header" id="top">
     <a class="brand" href="#top" aria-label="Satyam Mishra home">
-      <span class="brand-mark">SM</span>
+      <span class="brand-mark brand-mark-neural" aria-hidden="true">
+        <svg viewBox="0 0 64 64" class="brand-icon">
+          <defs>
+            <linearGradient id="brandGlyphGradient" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#69e6ff" />
+              <stop offset="0.5" stop-color="#8f7cff" />
+              <stop offset="1" stop-color="#ff7ad9" />
+            </linearGradient>
+          </defs>
+      
+          <circle cx="32" cy="32" r="28" fill="rgba(105,230,255,0.08)" stroke="url(#brandGlyphGradient)" stroke-width="2" />
+          <path d="M17 41 L28 17 L47 25 L40 48 Z" fill="none" stroke="url(#brandGlyphGradient)" stroke-width="3.2" stroke-linejoin="round" />
+          <path d="M28 17 L40 48 M17 41 L47 25" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" />
+      
+          <circle cx="28" cy="17" r="4.2" fill="#69e6ff" />
+          <circle cx="47" cy="25" r="4.2" fill="#8f7cff" />
+          <circle cx="40" cy="48" r="4.2" fill="#ff7ad9" />
+          <circle cx="17" cy="41" r="4.2" fill="#69e6ff" />
+      
+          <circle cx="32" cy="32" r="7" fill="#050816" stroke="url(#brandGlyphGradient)" stroke-width="2.2" />
+          <path d="M28 32 H36 M32 28 V36" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+      </span>
       <span class="brand-text">Satyam Mishra</span>
     </a>
     <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
