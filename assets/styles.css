@@ -852,3 +852,34 @@ h3 {
     display: none;
   }
 }
+
+/* Refined futuristic brand mark */
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(105, 230, 255, 0.35), transparent 34%),
+    radial-gradient(circle at 70% 72%, rgba(143, 124, 255, 0.32), transparent 38%),
+    rgba(5, 8, 22, 0.88);
+  border: 1px solid rgba(105, 230, 255, 0.38);
+  box-shadow:
+    0 0 28px rgba(105, 230, 255, 0.26),
+    inset 0 0 18px rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(105, 230, 255, 0.42));
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.brand:hover .brand-icon {
+  transform: rotate(8deg) scale(1.06);
+  filter: drop-shadow(0 0 14px rgba(143, 124, 255, 0.55));
+}
