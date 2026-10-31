@@ -125,7 +125,9 @@ const fullPublications = [
     venue: "arXiv preprint arXiv:2506.17297",
     year: "2025",
     citations: "1",
-    note: "First author · Open-source library"
+    note: "First author · Open-source library",
+    url: "https://pypi.org/project/saferl-lite/",
+    linkLabel: "View on PyPI →"
   },
   {
     title: "STEDSDR: Simulated Testing and Evaluation of Drone Surveillance for Disaster Response",
@@ -202,10 +204,10 @@ const fullPublications = [
   {
     title: "Koopman Spectral Dynamics for Interpretable and Predictive Semantic Drift in Language Models",
     authors: "S. Mishra, V. Phung, P. Vu, S. Mishra, S. Mishra, V. Bijalwan, T. D. Tan",
-    venue: "International Conference on Data Mining, ICDM 2025, 605-612",
+    venue: "IEEE International Conference on Data Mining, ICDM 2025, 605-612",
     year: "2025",
     citations: "",
-    note: "First author"
+    note: "First author · IEEE ICDM 2025 (A*) · Presented"
   },
   {
     title: "Exploring the Temporal Dynamics and Causal Interactions Between the Amygdala and vmPFC",
@@ -445,6 +447,13 @@ function renderPublications(items, containerId) {
     body.appendChild(makeEl("p", "publication-authors", item.authors));
     body.appendChild(makeEl("p", "publication-meta", `${item.venue} · ${item.year}`));
     if (item.note) body.appendChild(makeEl("p", "publication-note", item.note));
+    if (item.url) {
+      const link = makeEl("a", "stack-link", item.linkLabel || "View →");
+      link.href = item.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      body.appendChild(link);
+    }
 
     const badges = makeEl("div", "publication-badges");
     badges.appendChild(makeEl("span", "badge", item.year));

@@ -548,6 +548,33 @@ html.has-3d .hud {
   pointer-events: none;
 }
 
+/* Five metric cards */
+.metrics {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+@media (max-width: 1080px) {
+  .metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-card {
+    padding: 20px;
+    min-height: 112px;
+  }
+}
+
+.project-card .stack-link,
+.publication-body .stack-link {
+  margin-top: 12px;
+}
+
 /* Book links */
 .stack-link {
   display: inline-flex;
