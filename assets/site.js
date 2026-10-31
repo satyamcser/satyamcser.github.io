@@ -381,6 +381,12 @@ const preprints = [
 
 const books = [
   {
+    title: "QuanSkill’s 16 Weeks to Agentic AI Engineering: A Senior Engineer’s Guide with Hands-on Exercises and Simple Explanations",
+    status: "Live on Amazon · Kindle",
+    description: "A structured 16-week guide to building agentic AI systems that retrieve information, reason through tasks, use tools, remember context, and run reliably in real-world settings, with hands-on exercises and capstone milestones.",
+    url: "https://www.amazon.in/dp/B0HBMBYKYR"
+  },
+  {
     title: "AI Meets Pure Math: Issue #1",
     status: "Live on Amazon",
     description: "A learning resource exploring connections between pure mathematics and artificial intelligence, including Koopman operators in NLP."
@@ -458,6 +464,13 @@ function renderStack(items, containerId) {
     article.appendChild(makeEl("span", "status", item.status));
     article.appendChild(makeEl("h3", "", item.title));
     article.appendChild(makeEl("p", "", item.description));
+    if (item.url) {
+      const link = makeEl("a", "stack-link", "View on Amazon →");
+      link.href = item.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      article.appendChild(link);
+    }
     container.appendChild(article);
   });
 }
