@@ -305,12 +305,6 @@ html.has-3d .hud {
   opacity: 1;
 }
 
-.research-card .card-index::before {
-  content: "//";
-  margin-right: 6px;
-  color: var(--muted-2);
-}
-
 /* Scroll reveal (added by JS only, so content stays visible without it) */
 .reveal {
   opacity: 0;

@@ -4,7 +4,7 @@ const fullPublications = [
     authors: "S. Mishra, C. S. Minh, H. T. Chuc, T. V. Long, T. T. Nguyen",
     venue: "2021 International Seminar on Machine Learning, Optimization, and Data Science",
     year: "2022",
-    citations: "28",
+    citations: "27",
     note: "First author"
   },
   {
@@ -12,7 +12,7 @@ const fullPublications = [
     authors: "L. T. T. Satyam Mishra",
     venue: "Artificial Intelligence and Mobile Services, AIMS 2022, LNCS",
     year: "2022",
-    citations: "25",
+    citations: "26",
     note: "SJR Q2"
   },
   {
@@ -24,11 +24,19 @@ const fullPublications = [
     note: "First author"
   },
   {
+    title: "KAN-PDEs: A Novel Approach to Solving Partial Differential Equations Using Kolmogorov-Arnold Networks, Enhanced Accuracy and Efficiency",
+    authors: "S. Yeo, P. A. Nguyen, A. N. Le, S. Mishra",
+    venue: "International Conference on Electrical and Electronics Engineering, 43-62",
+    year: "2024",
+    citations: "11",
+    note: ""
+  },
+  {
     title: "Lightweight Authentication Encryption to Improve DTLS, Quark Combined with Overhearing to Prevent DoS and MITM on Low-Resource IoT Devices",
     authors: "N. V. Tanh, Satyam Mishra, V. M. Phuc",
     venue: "Internet of Things, ICIOT 2022, LNCS 13735, 108-122",
     year: "2023",
-    citations: "11",
+    citations: "10",
     note: "First author"
   },
   {
@@ -36,13 +44,13 @@ const fullPublications = [
     authors: "S. Mishra, N. T. B. Thuy, C. D. Truong",
     venue: "Artificial Intelligence and Mobile Services, AIMS 2023, 14202, 71-84",
     year: "2023",
-    citations: "9",
+    citations: "10",
     note: "First author"
   },
   {
-    title: "KAN-PDEs: A Novel Approach to Solving Partial Differential Equations Using Kolmogorov-Arnold Networks, Enhanced Accuracy and Efficiency",
-    authors: "S. Yeo, P. A. Nguyen, A. N. Le, S. Mishra",
-    venue: "International Conference on Electrical and Electronics Engineering, 43-62",
+    title: "Mitigating the Threat of Multi-Factor Authentication Bypass Through Man-in-the-Middle Attacks Using EvilGinx2",
+    authors: "S. Mishra, S. Mishra, Y. C. Toh, S. Mishra, P. T. Vi",
+    venue: "Creative Approaches Towards Development of Computing and Multidisciplinary IT Solutions",
     year: "2024",
     citations: "8",
     note: ""
@@ -52,21 +60,13 @@ const fullPublications = [
     authors: "N. V. Tanh, Phung Thao Vi, Satyam Mishra",
     venue: "Creative Approaches Towards Development of Computing and Multidisciplinary IT Solutions",
     year: "2024",
-    citations: "8",
-    note: ""
-  },
-  {
-    title: "Mitigating the Threat of Multi-Factor Authentication Bypass Through Man-in-the-Middle Attacks Using EvilGinx2",
-    authors: "S. Mishra, S. Mishra, Y. C. Toh, S. Mishra, P. T. Vi",
-    venue: "Creative Approaches Towards Development of Computing and Multidisciplinary IT Solutions",
-    year: "2024",
     citations: "7",
     note: ""
   },
   {
     title: "VIS-NLP: Vaccination Inventory System for Justified User Using Natural Language Processing",
     authors: "V. M. Phuc, S. Mishra, O. D. Igbagbo, L. T. Thanh",
-    venue: "Conference publication",
+    venue: "Health Informatics and Biomedical Engineering Applications, AHFE 78",
     year: "2023",
     citations: "7",
     note: ""
@@ -94,6 +94,14 @@ const fullPublications = [
     year: "2023",
     citations: "3",
     note: ""
+  },
+  {
+    title: "Debugging Human Pose Estimation with Explainable AI",
+    authors: "M. Satyam, N. Le Anh",
+    venue: "Proceedings of the International Conference on Intelligent Systems and Data Science",
+    year: "2024",
+    citations: "3",
+    note: "First author"
   },
   {
     title: "DICKT: Deep Learning-Based Image Captioning using Keras and TensorFlow",
@@ -126,14 +134,6 @@ const fullPublications = [
     year: "2024",
     citations: "1",
     note: ""
-  },
-  {
-    title: "Debugging Human Pose Estimation with Explainable AI",
-    authors: "M. Satyam, N. Le Anh",
-    venue: "Proceedings of the International Conference on Intelligent Systems and Data Science",
-    year: "2024",
-    citations: "1",
-    note: "First author"
   },
   {
     title: "Efficient Face Mask Detection for Banking Information Systems",
@@ -258,6 +258,13 @@ const fullPublications = [
 ];
 
 const preprints = [
+  {
+    title: "Offline Reward-Guided Trajectory Scoring for Generate-Then-Select Planning in Autonomous Driving",
+    authors: "H. Molla, S. Mishra, J. Lim, D. Kum",
+    venue: "Preprint",
+    year: "Manuscript",
+    note: "Second author · Autonomous driving"
+  },
   {
     title: "C3QG++: Context-Controlled, Explainable, and Efficient Question Generation with Transformers",
     authors: "S. Mishra and collaborators",
