@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://satyam-mishra.github.io/" />
   <meta property="og:image" content="https://satyam-mishra.github.io/assets/profile.jpg" />
 
-  <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
@@ -68,19 +68,21 @@
               <stop offset="0.5" stop-color="#8f7cff" />
               <stop offset="1" stop-color="#ff7ad9" />
             </linearGradient>
+            <radialGradient id="brandSweep" cx="32" cy="40" r="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#69E6FF" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#69E6FF" stop-opacity="0.42"/>
+    </radialGradient>
           </defs>
-      
-          <circle cx="32" cy="32" r="28" fill="rgba(105,230,255,0.08)" stroke="url(#brandGlyphGradient)" stroke-width="2" />
-          <path d="M17 41 L28 17 L47 25 L40 48 Z" fill="none" stroke="url(#brandGlyphGradient)" stroke-width="3.2" stroke-linejoin="round" />
-          <path d="M28 17 L40 48 M17 41 L47 25" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" />
-      
-          <circle cx="28" cy="17" r="4.2" fill="#69e6ff" />
-          <circle cx="47" cy="25" r="4.2" fill="#8f7cff" />
-          <circle cx="40" cy="48" r="4.2" fill="#ff7ad9" />
-          <circle cx="17" cy="41" r="4.2" fill="#69e6ff" />
-      
-          <circle cx="32" cy="32" r="7" fill="#050816" stroke="url(#brandGlyphGradient)" stroke-width="2.2" />
-          <path d="M28 32 H36 M32 28 V36" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+          <circle cx="32" cy="32" r="28" fill="rgba(105,230,255,0.06)" stroke="url(#brandGlyphGradient)" stroke-width="2" />
+          <path d="M32 40 L15.9 17.1 A28 28 0 0 1 39.2 12.95 Z" fill="url(#brandSweep)"/>
+          <circle cx="32" cy="40" r="10" stroke="#69E6FF" stroke-opacity="0.4" stroke-width="1.2" fill="none"/>
+          <circle cx="32" cy="40" r="18" stroke="#69E6FF" stroke-opacity="0.22" stroke-width="1.2" fill="none"/>
+          <rect x="11.5" y="22" width="9" height="9" rx="1.6" stroke="#FF7AD9" stroke-width="2" fill="none"/>
+          <path d="M32 33 C32 26 42 24 44 15" stroke="#65FFC8" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="3.2 3.2" fill="none"/>
+          <circle cx="44" cy="14" r="3.2" fill="#65FFC8"/>
+          <rect x="27.5" y="33" width="9" height="14" rx="3" fill="#050816" stroke="url(#brandGlyphGradient)" stroke-width="2.2"/>
+          <path d="M29.6 37 H34.4" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="32" cy="41.5" r="1.7" fill="#69E6FF"/>
         </svg>
       </span>
       <span class="brand-text">Satyam Mishra</span>
