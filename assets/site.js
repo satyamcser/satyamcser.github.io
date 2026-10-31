@@ -586,12 +586,103 @@ function setupCanvas() {
   });
 }
 
+function setupTilt() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (reduce || !finePointer) return;
+
+  document.querySelectorAll(".tilt").forEach((el) => {
+    const strength = el.classList.contains("hero-card") ? 7 : 10;
+    el.addEventListener("pointermove", (event) => {
+      const rect = el.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      el.style.setProperty("--rx", `${(-y * strength).toFixed(2)}deg`);
+      el.style.setProperty("--ry", `${(x * strength).toFixed(2)}deg`);
+      el.style.setProperty("--gx", `${((x + 0.5) * 100).toFixed(1)}%`);
+      el.style.setProperty("--gy", `${((y + 0.5) * 100).toFixed(1)}%`);
+    });
+    el.addEventListener("pointerleave", () => {
+      el.style.setProperty("--rx", "0deg");
+      el.style.setProperty("--ry", "0deg");
+    });
+  });
+}
+
+function setupReveal() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) return;
+
+  const items = document.querySelectorAll(
+    "main > section:not(.hero) .section-heading, .metric-card, .content-card, .stack-card, .timeline-item, .stack3d-stage, .autonomy-copy"
+  );
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add("in");
+      observer.unobserve(el);
+      // Hand the transform back to the tilt effect once the entrance finishes.
+      const delay = parseFloat(el.style.transitionDelay) || 0;
+      setTimeout(() => {
+        el.classList.remove("reveal", "in");
+        el.style.transitionDelay = "";
+      }, 1000 + delay * 1000);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+  items.forEach((el) => {
+    const siblings = Array.from(el.parentElement.children);
+    el.style.transitionDelay = `${(siblings.indexOf(el) % 4) * 0.08}s`;
+    el.classList.add("reveal");
+    observer.observe(el);
+  });
+}
+
+function setupCounters() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      observer.unobserve(el);
+      const target = parseInt(el.dataset.value, 10);
+      const suffix = el.dataset.suffix;
+      const begin = performance.now();
+      function frame(now) {
+        const t = Math.min(1, (now - begin) / 1400);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = `${Math.round(target * eased)}${suffix}`;
+        if (t < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll(".metric-value").forEach((el) => {
+    const match = el.textContent.trim().match(/^(\d+)(.*)$/);
+    if (!match) return;
+    el.dataset.value = match[1];
+    el.dataset.suffix = match[2];
+    el.textContent = `0${match[2]}`;
+    observer.observe(el);
+  });
+}
+
 renderPublications(fullPublications, "full-publications");
 renderPublications(preprints, "preprint-publications");
 renderStack(patents, "patent-list");
 renderStack(books, "book-list");
 setupTabs();
 setupNavigation();
-setupCanvas();
+setupTilt();
+setupReveal();
+setupCounters();
+// The 3D scene (assets/scene.js) loads as a module; fall back to the 2D canvas if it never starts.
+window.addEventListener("load", () => {
+  if (!window.__scene3d) setupCanvas();
+});
 document.getElementById("publication-search").addEventListener("input", filterPublications);
 document.getElementById("year").textContent = new Date().getFullYear();

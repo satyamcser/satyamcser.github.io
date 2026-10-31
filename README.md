@@ -7,6 +7,9 @@ Dark futuristic academic website for GitHub Pages.
 - `index.html`: Main single-page academic website
 - `assets/styles.css`: Styling and responsive layout
 - `assets/site.js`: Publications, patents, books, search, tabs, and neural background animation
+- `assets/scene.js`: 3D autonomous-driving background (Three.js): ego car, LiDAR sweep, tracked objects, drone, planned path, chase-to-BEV camera
+- `assets/robot.js`: Interactive 3D robot arm in the Robotics section (inverse kinematics follows the pointer)
+- `assets/scene.css`: Styles for the 3D scene, HUD, tilt cards, autonomy stack, robotics section, and responsive layout
 - `assets/profile.jpg`: Profile photo
 - `assets/favicon.svg`: Site icon
 - `robots.txt` and `sitemap.xml`: Basic SEO files

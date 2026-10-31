@@ -4,17 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Satyam Mishra | AI Researcher</title>
-  <meta name="description" content="Academic website of Satyam Mishra, AI Researcher and Integrated MS-PhD Student at KAIST, AXE Lab. Research interests include autonomous systems, reinforcement learning, LLMs, planning, perception." />  <meta name="author" content="Satyam Mishra" />
+  <meta name="description" content="Academic website of Satyam Mishra, AI Researcher and Integrated MS-PhD Student at KAIST, AXE Lab. Research interests include autonomous driving, robotics and embodied AI, reinforcement learning, planning, perception, and LLMs." />  <meta name="author" content="Satyam Mishra" />
   <meta name="theme-color" content="#050816" />
 
   <meta property="og:title" content="Satyam Mishra | AI Researcher" />
-  <meta property="og:description" content="Integrated MS-PhD Student at KAIST working on AI, autonomous systems, reinforcement learning, LLMs, planning, perception, and interpretable AI." />
+  <meta property="og:description" content="Integrated MS-PhD Student at KAIST AXE Lab working on autonomous driving, robotics, embodied AI, reinforcement learning, planning, perception, and interpretable AI." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://satyam-mishra.github.io/" />
   <meta property="og:image" content="https://satyam-mishra.github.io/assets/profile.jpg" />
 
   <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="assets/styles.css?v=4" />
+  <link rel="stylesheet" href="assets/scene.css?v=4" />
 
   <script type="application/ld+json">
   {
@@ -37,6 +41,8 @@
       "Artificial Intelligence",
       "Reinforcement Learning",
       "Autonomous Driving",
+      "Robotics",
+      "Embodied AI",
       "Planning and Perception",
       "Natural Language Processing",
       "Large Language Models",
@@ -47,7 +53,9 @@
   </script>
 </head>
 <body>
+  <canvas id="scene-3d" aria-hidden="true"></canvas>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
+  <div class="scene-scrim" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
 
   <header class="site-header" id="top">
@@ -81,6 +89,7 @@
     <nav class="site-nav" aria-label="Primary navigation">
       <a href="#about">About</a>
       <a href="#research">Research</a>
+      <a href="#robotics">Robotics</a>
       <a href="#publications">Publications</a>
       <a href="#projects">Projects</a>
       <a href="#patents">Patents</a>
@@ -93,11 +102,11 @@
     <section class="hero section-padding">
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="eyebrow">AI Researcher · KAIST · AXE Lab</p>
+        <p class="eyebrow">Autonomous Driving · Robotics · KAIST AXE Lab</p>
         <h1>Satyam Mishra</h1>
-        <p class="hero-title">AI Researcher | PhD Researcher at KAIST | AXE Lab</p>
+        <p class="hero-title">PhD Researcher at KAIST · Building machines that perceive, plan and act</p>
         <p class="hero-summary">
-          I work on artificial intelligence systems that connect theory, autonomy, and real-world deployment, with research interests across reinforcement learning, autonomous driving, planning and perception, natural language processing, large language models, optimization, and interpretable AI.
+          I work on AI for autonomous vehicles and robots: end-to-end planning for self-driving, robot perception, and reinforcement learning for safe control. Alongside that, I study interpretability and semantic dynamics in large language models.
         </p>
         <div class="hero-actions" aria-label="Profile links">
           <a class="btn primary" href="mailto:satyam.mishra@kaist.ac.kr">Email</a>
@@ -106,9 +115,14 @@
           <a class="btn" href="https://www.linkedin.com/in/satyam_cser" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
-      <aside class="hero-card" aria-label="Profile card">
+      <aside class="hero-card tilt" aria-label="Profile card">
         <div class="portrait-wrap">
           <img src="assets/profile.jpg" alt="Portrait of Satyam Mishra" class="portrait" />
+          <div class="detect-box" aria-hidden="true">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="detect-label">person · 0.99 · ID 001</span>
+            <span class="scan-line"></span>
+          </div>
         </div>
         <div class="profile-mini">
           <p class="mini-label">Current affiliation</p>
@@ -117,22 +131,34 @@
           <p>Automotive Intelligence X Electrification Lab</p>
         </div>
       </aside>
+      <div class="hud" aria-hidden="true">
+        <div class="hud-cell"><span>SPD</span><b id="hud-speed">79</b><i>km/h</i></div>
+        <div class="hud-cell"><span>STEER</span><b id="hud-steer">+0.0</b><i>deg</i></div>
+        <div class="hud-cell"><span>LIDAR</span><b id="hud-pts">0</b><i>pts</i></div>
+        <div class="hud-cell"><span>TRACKS</span><b id="hud-obj">0</b><i>obj</i></div>
+        <div class="hud-cell"><span>VIEW</span><b id="hud-view">CHASE</b><i>cam</i></div>
+        <div class="hud-status"><span class="hud-dot"></span>E2E planner · active</div>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About">
+        <span class="scroll-cue-track"><span></span></span>
+        <span class="scroll-cue-text">Scroll · switch to bird's-eye view</span>
+      </a>
     </section>
 
     <section class="metrics section-padding compact" aria-label="Scholar metrics">
-      <div class="metric-card">
+      <div class="metric-card tilt">
         <span class="metric-value">138</span>
         <span class="metric-label">Citations</span>
       </div>
-      <div class="metric-card">
+      <div class="metric-card tilt">
         <span class="metric-value">7</span>
         <span class="metric-label">h-index</span>
       </div>
-      <div class="metric-card">
+      <div class="metric-card tilt">
         <span class="metric-value">4</span>
         <span class="metric-label">i10-index</span>
       </div>
-      <div class="metric-card">
+      <div class="metric-card tilt">
         <span class="metric-value">36+</span>
         <span class="metric-label">Research outputs</span>
       </div>
@@ -154,6 +180,8 @@
           <span>Artificial Intelligence</span>
           <span>Reinforcement Learning</span>
           <span>Autonomous Driving</span>
+          <span>Robotics</span>
+          <span>Embodied AI</span>
           <span>Planning and Perception</span>
           <span>NLP and LLMs</span>
           <span>Optimization</span>
@@ -167,30 +195,96 @@
       <div class="section-heading centered">
         <p class="eyebrow">Research</p>
         <h2>Research directions</h2>
-        <p>My work connects autonomy, representation learning, dynamical systems, and safety-aware AI.</p>
+        <p>My work connects autonomy, robotics, representation learning, dynamical systems, and safety-aware AI.</p>
       </div>
       <div class="research-grid">
-        <article class="content-card research-card">
+        <article class="content-card research-card tilt">
           <span class="card-index">01</span>
           <h3>Autonomous Driving and Planning</h3>
           <p>End-to-end planning, latent planning states, perception-to-control pipelines, and controller design for self-driving systems.</p>
         </article>
-        <article class="content-card research-card">
+        <article class="content-card research-card tilt">
           <span class="card-index">02</span>
           <h3>Reinforcement Learning and AI Safety</h3>
           <p>Safe and explainable RL, constrained decision-making, symbolic oversight, grammar-constrained generation, and agent safety.</p>
         </article>
-        <article class="content-card research-card">
+        <article class="content-card research-card tilt">
           <span class="card-index">03</span>
           <h3>LLMs and Semantic Dynamics</h3>
           <p>Semantic drift, entropy signals, Koopman operators, spectral methods, hallucination detection, and alignment under domain shift.</p>
         </article>
-        <article class="content-card research-card">
+        <article class="content-card research-card tilt">
           <span class="card-index">04</span>
-          <h3>Computer Vision and Cyber-Physical AI</h3>
-          <p>Object detection, measurement systems, human pose debugging, robotics perception, IoT security, and applied AI systems.</p>
+          <h3>Robotics and Cyber-Physical AI</h3>
+          <p>Robot perception, mobile robots, embodied intelligence, object detection and measurement, human pose analysis, and IoT security.</p>
         </article>
       </div>
+    </section>
+
+    <section id="autonomy" class="section-padding autonomy-section">
+      <div class="stack3d-stage">
+        <ol class="stack3d" aria-label="Autonomous driving stack">
+          <li class="layer layer-perception" style="--i: 0"><span class="layer-tag">L1</span><strong>Perception</strong><em>sensors · detection · BEV</em></li>
+          <li class="layer layer-prediction" style="--i: 1"><span class="layer-tag">L2</span><strong>Prediction</strong><em>agents · motion · intent</em></li>
+          <li class="layer layer-planning" style="--i: 2"><span class="layer-tag">L3</span><strong>Planning</strong><em>end-to-end · latent states</em></li>
+          <li class="layer layer-control" style="--i: 3"><span class="layer-tag">L4</span><strong>Control</strong><em>trajectory · actuation</em></li>
+        </ol>
+      </div>
+      <div class="autonomy-copy">
+        <p class="eyebrow">Autonomy stack</p>
+        <h2>From sensors to steering</h2>
+        <p>
+          My PhD research at KAIST AXE Lab focuses on end-to-end planning for autonomous driving: how planners represent the world in their latent states, and how those representations connect to control architectures for self-driving systems.
+        </p>
+        <ul class="autonomy-list">
+          <li><span>L1</span>Perceiving the scene from cameras and LiDAR</li>
+          <li><span>L2</span>Anticipating how surrounding agents will move</li>
+          <li><span>L3</span>Planning safe, interpretable trajectories</li>
+          <li><span>L4</span>Turning plans into stable vehicle control</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="robotics" class="section-padding robotics-section">
+      <div class="robotics-copy">
+        <p class="eyebrow">Robotics · Embodied AI</p>
+        <h2>Intelligence that moves</h2>
+        <p>
+          A self-driving car is one kind of robot. I am interested in the wider family of machines that sense, plan and act in the physical world, and in learning methods that keep them safe and predictable while they do it.
+        </p>
+        <div class="robotics-grid">
+          <article class="content-card robo-card tilt">
+            <span class="card-index">R1</span>
+            <h3>Mobile robots</h3>
+            <p>Built a self-driving robot car on a Jetson Nano with deep-learning collision avoidance, path following, and image recognition.</p>
+          </article>
+          <article class="content-card robo-card tilt">
+            <span class="card-index">R2</span>
+            <h3>Robot perception</h3>
+            <p>Detection, measurement, and pose understanding that turn camera input into geometry a robot can act on.</p>
+          </article>
+          <article class="content-card robo-card tilt">
+            <span class="card-index">R3</span>
+            <h3>Learning to act</h3>
+            <p>Reinforcement learning with safety constraints and symbolic oversight for decision-making on embodied platforms.</p>
+          </article>
+          <article class="content-card robo-card tilt">
+            <span class="card-index">R4</span>
+            <h3>Closing the loop</h3>
+            <p>Connecting perception, planning, and control into systems that behave reliably outside the lab.</p>
+          </article>
+        </div>
+      </div>
+      <figure class="robot-stage">
+        <canvas id="robot-3d" role="img" aria-label="Interactive 3D robot arm that follows your pointer"></canvas>
+        <div class="robot-hud" aria-hidden="true">
+          <span>J1 <b id="robot-j1">0°</b></span>
+          <span>J2 <b id="robot-j2">0°</b></span>
+          <span>J3 <b id="robot-j3">0°</b></span>
+          <span>GRIP <b id="robot-grip">0%</b></span>
+        </div>
+        <figcaption class="robot-hint">Point anywhere on the workspace and the arm solves inverse kinematics to reach it.</figcaption>
+      </figure>
     </section>
 
     <section id="publications" class="section-padding">
@@ -220,27 +314,27 @@
         <h2>Selected applied AI systems</h2>
       </div>
       <div class="project-grid">
-        <article class="content-card project-card">
-          <h3>Healthcare AI Agent</h3>
-          <p>Developed and presented a healthcare AI agent PoC focused on domain-specific knowledge bases and agentic AI frameworks.</p>
-        </article>
-        <article class="content-card project-card">
-          <h3>Research-Driven AI Agent</h3>
-          <p>Built a research-grade AI agent using Gemini, LangChain, tool calling, DuckDuckGo search, and Pydantic-based structured outputs.</p>
-        </article>
-        <article class="content-card project-card">
+        <article class="content-card project-card tilt">
           <h3>Autonomous Robot with Jetson Nano</h3>
           <p>Developed a self-driving robot car with deep learning for collision avoidance, path following, and image recognition.</p>
         </article>
-        <article class="content-card project-card">
+        <article class="content-card project-card tilt">
+          <h3>Healthcare AI Agent</h3>
+          <p>Developed and presented a healthcare AI agent PoC focused on domain-specific knowledge bases and agentic AI frameworks.</p>
+        </article>
+        <article class="content-card project-card tilt">
+          <h3>Research-Driven AI Agent</h3>
+          <p>Built a research-grade AI agent using Gemini, LangChain, tool calling, DuckDuckGo search, and Pydantic-based structured outputs.</p>
+        </article>
+        <article class="content-card project-card tilt">
           <h3>SATMeas Object Detection and Measurement</h3>
           <p>Built a real-time object detection and dimension measurement system using computer vision, reaching over 98% reported accuracy.</p>
         </article>
-        <article class="content-card project-card">
+        <article class="content-card project-card tilt">
           <h3>Conversational AI with MistralAI</h3>
           <p>Created a Streamlit chatbot using Mistral-7B-v0.1, with practical deployment considerations for generative AI applications.</p>
         </article>
-        <article class="content-card project-card">
+        <article class="content-card project-card tilt">
           <h3>Email Sentiment Analysis</h3>
           <p>Built a platform for analyzing email sentiment with Hugging Face Transformers, NLTK, and language-model-based response generation.</p>
         </article>
@@ -314,6 +408,8 @@
     <a href="#top">Back to top</a>
   </footer>
 
-  <script src="assets/site.js"></script>
+  <script src="assets/site.js?v=4"></script>
+  <script type="module" src="assets/scene.js?v=4"></script>
+  <script type="module" src="assets/robot.js?v=4"></script>
 </body>
 </html>
